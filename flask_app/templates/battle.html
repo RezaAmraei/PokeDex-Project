@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battle!</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='CSS/battle.css') }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <a href="/home"><button>Back To PokeDex</button></a>
+    <h1>Get Ready To Fight</h1>
+    <img
+      id="background"
+      src="{{ url_for('static', filename='img/battle-background.png') }}"
+      alt="PokeBall"
+    />
+    <div class="moveset d-flex">
+      <div>
+        <button id="move1" onclick="displayAttack(); attack();"></button>
+      </div>
+      <div><button id="move2" onclick="displayAttack()"></button></div>
+    </div>
+    <div class="moveset d-flex">
+      <div><button id="move3" onclick="displayAttack()"></button></div>
+      <div><button id="move4" onclick="displayAttack()"></button></div>
+    </div>
+    <!-- <img
+      id="main-pokemon"
+      src="{{ url_for('static', filename='img/Poke-Ball.png') }}"
+      alt="PokeBall"
+    /> -->
+    <div id="main-pokemon"></div>
+
+    <div id="side-pokemon"></div>
+    <!-- <img
+      id="side-pokemon"
+      src="{{ url_for('static', filename='img/Poke-Ball.png') }}"
+      alt="PokeBall"
+    /> -->
+    <!-- <div id="fav-pokemon"></div> -->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/battle.js') }}"
+    ></script>
+  </body>
+</html>

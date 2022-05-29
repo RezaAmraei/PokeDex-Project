@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='CSS/style.css') }}"
+    />
+  </head>
+  <!-- Remove padding later, class in the body -->
+  <body>
+    <!-- Header of the page -->
+
+    <div id="main">
+      <!-- PokeBalls on the Right -->
+      <div class="col">
+        <!-- <img src="img\Poke-Ball.webp" alt="Poke Ball" /> -->
+        <img
+          src="{{ url_for('static', filename='img/Poke-Ball.png') }}"
+          alt="PokeBall"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Ultra_Ball_Sprite.webp') }}"
+          alt="Ultra Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Quick_Ball_Sprite.webp') }}"
+          alt="Quick Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Timer_Ball_Sprite.webp') }}"
+          alt="Timer Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Dive_Ball_Sprite.webp') }}"
+          alt="Dive Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Nest_Ball_Sprite.webp') }}"
+          alt="Nest Ball"
+        />
+      </div>
+      <!-- Main body with all the content -->
+      <div class="main-col">
+        <div class="header">
+          <div class="top-header">
+            <div></div>
+            <h1 class="test">Pokédex!</h1>
+            <div id="header-buttons">
+              {% if not id %}
+              <a href="/logging/in"><button>Login</button></a>
+              <a href="/registering"><button>Register</button></a>
+              {% endif %}{% if id %}
+              <a href="/logout"><button>Logout</button></a>
+              <a href="/favorite"><button>View Favorites</button></a>
+              {% endif %}
+            </div>
+          </div>
+          <form onsubmit="event.preventDefault(); getPokemon();">
+            <input oninput="setName(this)" type="text" id="" />
+
+            <button class="btn btn-success" id="search-btn">Search!</button>
+          </form>
+        </div>
+        <div id="displayImg"></div>
+        <div id="displayName" class="fontSize"></div>
+        <div id="displayType" class="fontSize"></div>
+        <div id="displayMoves" class="fontSize"></div>
+        <div id="content-buttons">
+          {% if id %}
+          <!-- ADDING FAVORITE POKEMON -->
+          <form action="/adding/fav" method="post">
+            <input
+              type="hidden"
+              name="pokemon_index"
+              id="poke_id"
+              value="Test"
+            />
+            <input type="submit" value="Favorite" />
+          </form>
+          <!-- FORM FOR TEST BATTLE -->
+          <form action="/storing/pokemon" method="post">
+            <input
+              type="hidden"
+              name="battle_pokemon"
+              id="battle_pokemon"
+              value="Test"
+            />
+            <input type="submit" value="Test Battle" />
+          </form>
+          <!-- <a href="/battle"><button>Test Battle</button></a> -->
+          {% endif %} {% if not id %}
+          <a href="/logging/in"><button>Favorite</button></a>
+          <a href="/logging/in"><button>Test Battle</button></a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- PokeBalls on the right -->
+      <div class="col" id="col-right">
+        <img
+          src="{{ url_for('static', filename='img/Dream_Great_Ball_Sprite.png') }}"
+          alt="Great Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Master_Ball_Sprite.webp') }}"
+          alt="Master Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Luxury_Ball_Sprite.webp') }}"
+          alt="Luxury Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Premier_Ball_Sprite.webp') }}"
+          alt="Premier Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Repeat_Ball_Sprite.webp') }}"
+          alt="Repeat Ball"
+        />
+        <img
+          src="{{ url_for('static', filename='img/Dream_Net_Ball_Sprite.webp') }}"
+          alt="Net Ball"
+        />
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+  </body>
+</html>
